@@ -16,40 +16,6 @@ Aplikasi ini memiliki dukungan **Dark & Light Mode**, tampilan dashboard interak
 | **CSS Custom Styling** | Desain UI modern & responsif |
 | **FontAwesome Icons** | Icon pack |
 
----
-
-## 📂 **Struktur Proyek**
-📦 banking-sales-portal
-├── 📁 public
-├── 📁 src
-│ ├── 📁 assets
-│ ├── 📁 components
-│ ├── 📁 context
-│ ├── 📁 data
-│ ├── 📁 pages
-│ │ ├── Dashboard.jsx
-│ │ ├── Leads.jsx
-│ │ ├── LeadDetail.jsx
-│ │ ├── Landing.jsx
-│ │ ├── Login.jsx
-│ │ ├── Register.jsx
-│ │ └── Analytics.jsx
-│ ├── 📁 styles
-│ │ ├── base.css
-│ │ ├── dashboard.css
-│ │ ├── leads.css
-│ │ ├── lead-detail.css
-│ │ └── responsive.css
-│ ├── App.jsx
-│ ├── main.jsx
-│ └── theme.js
-├── package.json
-├── index.html
-└── README.md
-
-
----
-
 ## 🔥 **Fitur Utama**
 
 ### 📊 **Dashboard Interaktif**
