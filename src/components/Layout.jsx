@@ -1,22 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
 import { sidebarCounts } from "../data/dashboardMock";
-import { toggleTheme } from "../theme";
 
 const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
-
-  // Langsung baca class "light" di html saat inisialisasi state
-  const [isLight, setIsLight] = useState(() => {
-    if (typeof document === "undefined") return false;
-    return document.documentElement.classList.contains("light");
-  });
-
-  const handleToggleTheme = () => {
-    toggleTheme();
-    setIsLight((prev) => !prev);
-  };
 
   const isActive = (path) =>
     location.pathname === path || location.pathname.startsWith(path + "/");
@@ -34,17 +22,9 @@ const Layout = () => {
     <div className="dashboard-container">
       {/* SIDEBAR */}
       <aside className="sidebar">
-        {/* BARIS ATAS: Banking Portal + Theme Toggle */}
+        {/* BARIS ATAS: Banking Portal (tanpa toggle tema) */}
         <div className="sidebar-title-row">
-          <h3>Banking Portal</h3>
-
-          <button
-            type="button"
-            onClick={handleToggleTheme}
-            className="theme-toggle-btn"
-          >
-            <i className={isLight ? "fas fa-sun" : "fas fa-moon"} />
-          </button>
+          <h2>Banking Portal</h2>
         </div>
 
         {/* MENU */}

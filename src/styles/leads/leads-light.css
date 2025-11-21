@@ -105,6 +105,16 @@ html.light .view-toggle-dark .view-btn-dark.active {
   color: #ffffff;
 }
 
+/* Hover: icon & text putih */
+html.light .view-toggle-dark .view-btn-dark:hover {
+  background: #0a1931;
+  color: #ffffff !important;
+}
+
+html.light .view-toggle-dark .view-btn-dark:hover i {
+  color: #ffffff !important;
+}
+
 /* TABEL LEADS */
 html.light .leads-table {
   color: #0a1931;
@@ -135,7 +145,6 @@ html.light .leads-table tbody tr:nth-child(odd) {
 /* hover row */
 html.light .leads-table tbody tr:hover {
   background: #dbeafe;
-  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.18);
 }
 
 /* Badge & status */
@@ -223,4 +232,86 @@ html.light .pagination-btn.active {
   background: #0a1931;
   border-color: #0a1931;
   color: #ffffff;
+}
+
+html.light .btn-dark-primary span,
+html.light .btn-dark-primary * {
+  color: #ffffff !important;
+}
+
+/* =====================================================
+   LEADS – LIGHT MODE (POIN 3 POLISH)
+   ===================================================== */
+
+/* --- Avatar lebih lembut (shadow tipis) --- */
+html.light .avatar {
+  box-shadow: 0 2px 4px rgba(15, 23, 42, 0.15) !important;
+  border: 1px solid #d3e3f5 !important;
+}
+
+/* --- Score Bar: bagian kosong putih bersih --- */
+html.light .score-bar {
+  background: #ffffff !important;
+  border-radius: 999px !important;
+  border: 1px solid #d3e3f5 !important;
+}
+
+/* --- Teks skor tetap gelap & jelas --- */
+html.light .score-text {
+  color: #0a1931 !important;
+}
+
+/* --- Badge kategori tidak bertumpuk --- */
+html.light .badge-high,
+html.light .badge-medium {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+
+  min-width: 75px;
+  padding: 4px 10px;
+
+  border-radius: 999px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  margin-left: 6px;
+}
+
+/* --- Action buttons (email & telepon) --- */
+html.light .action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+html.light .btn-icon-small {
+  width: 28px;
+  height: 28px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #ffffff !important;
+  border: 1px solid #b3cfe5 !important;
+  color: #0a1931 !important;
+
+  border-radius: 999px;
+  font-size: 0.78rem;
+
+  box-shadow: 0 2px 4px rgba(10, 25, 49, 0.12) !important;
+  transition: 0.15s ease;
+}
+
+html.light .btn-icon-small:hover {
+  background: #0a1931 !important;
+  color: #ffffff !important;
+  border-color: #0a1931 !important;
+  box-shadow: 0 4px 8px rgba(10, 25, 49, 0.18) !important;
+  transform: translateY(-1px);
+}
+
+/* Icon mengikuti warna tombol */
+html.light .btn-icon-small i {
+  color: inherit !important;
 }

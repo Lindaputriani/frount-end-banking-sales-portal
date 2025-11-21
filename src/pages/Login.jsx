@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { toggleTheme } from "../theme";
 
 const Login = () => {
   const navigate = useNavigate();
-  const [showPassword, setShowPassword] = useState(false);
-  const [form, setForm] = useState({ email: "", password: "" });
-  const [isLight, setIsLight] = useState(false);
 
-  // cek mode saat pertama kali load
-  useEffect(() => {
-    const hasLight = document.documentElement.classList.contains("light");
-    setIsLight(hasLight);
-  }, []);
+  const [showPassword, setShowPassword] = useState(false);
+  const [form, setForm] = useState({
+    identity: "",
+    password: "",
+  });
+
+  const [isLight, setIsLight] = useState(
+    () =>
+      typeof document !== "undefined" &&
+      document.documentElement.classList.contains("light")
+  );
+
+  const [loading, setLoading] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
 
   const handleToggleTheme = () => {
     toggleTheme();
@@ -23,23 +29,59 @@ const Login = () => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    setErrorMsg("");
 
-    // TODO: validasi / call API login
-    // Untuk demo: kalau ada email & password, anggap sukses
-    if (form.email && form.password) {
-      // Simpan nama & role (nanti bisa dari response API)
-      localStorage.setItem("userName", "Ahmad Rizki");
-      localStorage.setItem("userRole", "Sales Manager");
+    if (!form.identity || !form.password) {
+      setErrorMsg("Email/username dan password wajib diisi.");
+      return;
+    }
 
+    try {
+      setLoading(true);
+
+      // 🔁 SESUAIKAN URL & NAMA FIELD DENGAN BACKEND-MU
+      const res = await fetch("http://localhost:5000/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          identity: form.identity,
+          password: form.password,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        // sesuaikan key `message` kalau backend pakai nama lain
+        setErrorMsg(data.message || "Login gagal. Periksa kembali data Anda.");
+        return;
+      }
+
+      // ✅ simpan informasi user (sesuaikan field `user.name` & `user.role`)
+      if (data.token) {
+        localStorage.setItem("token", data.token);
+      }
+
+      if (data.user) {
+        localStorage.setItem("userName", data.user.name || "User");
+        localStorage.setItem("userRole", data.user.role || "Sales");
+      }
+
+      // setelah login sukses, arahkan ke dashboard
       navigate("/dashboard");
+    } catch (err) {
+      console.error("Login error:", err);
+      setErrorMsg("Terjadi kesalahan server. Coba beberapa saat lagi.");
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
-      {/* TOGGLE TEMA UNTUK LOGIN */}
+      {/* toggle theme */}
       <button
         className="auth-theme-toggle"
         onClick={handleToggleTheme}
@@ -50,7 +92,7 @@ const Login = () => {
 
       <div className="auth-page">
         <div className="auth-container">
-          {/* Kiri: branding & fitur */}
+          {/* Kiri */}
           <div className="auth-left">
             <div className="auth-branding">
               <i className="fas fa-chart-line" />
@@ -63,50 +105,52 @@ const Login = () => {
                 <i className="fas fa-bullseye" />
                 <div>
                   <h3>Prediksi Akurat</h3>
-                  <p>Model ML untuk identifikasi calon nasabah potensial</p>
+                  <p>Model ML mendeteksi calon nasabah potensial</p>
                 </div>
               </div>
               <div className="feature-item">
                 <i className="fas fa-users" />
                 <div>
                   <h3>Prioritas Lead</h3>
-                  <p>Fokus pada nasabah dengan probabilitas tertinggi</p>
+                  <p>Fokus pada nasabah probabilitas tertinggi</p>
                 </div>
               </div>
               <div className="feature-item">
                 <i className="fas fa-chart-bar" />
                 <div>
                   <h3>Dashboard Interaktif</h3>
-                  <p>Visualisasi data real-time untuk keputusan tepat</p>
+                  <p>Visualisasi data untuk keputusan tepat</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Kanan: form login */}
+          {/* Kanan */}
           <div className="auth-right">
             <div className="auth-form-container">
-              <h2>Selamat Datang Kembali</h2>
+              <h2>Selamat Datang</h2>
               <p className="auth-subtitle">
-                Masuk ke akun Anda untuk melanjutkan
+                Masuk menggunakan Username atau Email
               </p>
 
               <form className="auth-form" onSubmit={handleSubmit}>
+                {/* Identity (username/email) */}
                 <div className="form-group">
-                  <label htmlFor="email">
-                    <i className="fas fa-envelope" /> Email atau ID Karyawan
+                  <label htmlFor="identity">
+                    <i className="fas fa-user" /> Username atau Email
                   </label>
                   <input
                     type="text"
-                    id="email"
-                    name="email"
+                    id="identity"
+                    name="identity"
                     required
-                    placeholder="nama@perusahaan.com atau BNK-XXXX"
-                    value={form.email}
+                    placeholder="contoh: rizki123 atau rizki@bank.com"
+                    value={form.identity}
                     onChange={handleChange}
                   />
                 </div>
 
+                {/* Password */}
                 <div className="form-group">
                   <label htmlFor="password">
                     <i className="fas fa-lock" /> Password
@@ -133,6 +177,19 @@ const Login = () => {
                   </div>
                 </div>
 
+                {/* Error message */}
+                {errorMsg && (
+                  <p
+                    style={{
+                      color: "#fca5a5",
+                      fontSize: "0.85rem",
+                      marginTop: "0.2rem",
+                    }}
+                  >
+                    {errorMsg}
+                  </p>
+                )}
+
                 <div className="form-group checkbox-group">
                   <label className="checkbox-label">
                     <input type="checkbox" id="remember" />
@@ -143,8 +200,18 @@ const Login = () => {
                   </label>
                 </div>
 
-                <button type="submit" className="btn btn-primary btn-block">
-                  <i className="fas fa-sign-in-alt" /> Masuk
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-block"
+                  disabled={loading}
+                >
+                  {loading ? (
+                    "Memproses..."
+                  ) : (
+                    <>
+                      <i className="fas fa-sign-in-alt" /> Masuk
+                    </>
+                  )}
                 </button>
 
                 <div className="auth-divider">
@@ -162,13 +229,6 @@ const Login = () => {
                     <i className="fab fa-microsoft" /> Microsoft
                   </button>
                 </div>
-
-                <p className="auth-switch">
-                  Belum punya akun?{" "}
-                  <Link to="/register" className="link">
-                    Daftar sekarang
-                  </Link>
-                </p>
               </form>
             </div>
           </div>

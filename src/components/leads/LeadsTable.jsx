@@ -8,7 +8,6 @@ const LeadsTable = ({
   onRowClick,
   onCallLead,
   onEmailLead,
-  onAddNote,
 }) => {
   return (
     <>
@@ -97,13 +96,13 @@ const LeadsTable = ({
                   {/* KATEGORI */}
                   <td>
                     {scoreCat === "high" && (
-                      <span className="badge-high">Sangat Tinggi</span>
+                      <span className="badge-high">Tinggi</span>
                     )}
                     {scoreCat === "medium" && (
-                      <span className="badge-medium">Tinggi</span>
+                      <span className="badge-medium">Sedang</span>
                     )}
                     {scoreCat === "low" && (
-                      <span className="badge-medium">Sedang</span>
+                      <span className="badge-medium">Rendah</span>
                     )}
                   </td>
 
@@ -114,20 +113,9 @@ const LeadsTable = ({
                     </span>
                   </td>
 
-                  {/* AKSI */}
+                  {/* AKSI – hanya Email & Telepon, telepon paling kanan */}
                   <td>
                     <div className="action-buttons">
-                      <button
-                        type="button"
-                        className="btn-icon-small"
-                        title="Hubungi"
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          onCallLead(lead);
-                        }}
-                      >
-                        <i className="fas fa-phone" />
-                      </button>
                       <button
                         type="button"
                         className="btn-icon-small"
@@ -142,13 +130,13 @@ const LeadsTable = ({
                       <button
                         type="button"
                         className="btn-icon-small"
-                        title="Catatan"
+                        title="Hubungi"
                         onClick={(e) => {
                           e.stopPropagation();
-                          onAddNote(lead);
+                          onCallLead(lead);
                         }}
                       >
-                        <i className="fas fa-sticky-note" />
+                        <i className="fas fa-phone" />
                       </button>
                     </div>
                   </td>
@@ -169,9 +157,6 @@ const LeadsTable = ({
 
       {/* PAGINATION (dummy) */}
       <div className="pagination">
-        <div className="pagination-info">
-          Menampilkan <strong>{leads.length}</strong> lead
-        </div>
         <div className="pagination-controls">
           <button className="pagination-btn" disabled>
             <i className="fas fa-chevron-left" />
