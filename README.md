@@ -45,6 +45,3 @@ Aplikasi ini memiliki dukungan **Dark & Light Mode**, tampilan dashboard interak
 
 ### 🔐 **Authentication**
 - Login & Register halaman modern
-
-### Update UI
-Menambahkan improvement pada layout dashboard dan lead priority section
