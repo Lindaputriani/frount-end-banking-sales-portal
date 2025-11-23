@@ -22,9 +22,17 @@ const Layout = () => {
     <div className="dashboard-container">
       {/* SIDEBAR */}
       <aside className="sidebar">
-        {/* BARIS ATAS: Banking Portal (tanpa toggle tema) */}
+        {/* BRANDING ATAS: icon + title + subtitle */}
         <div className="sidebar-title-row">
-          <h2>Banking Portal</h2>
+          <div className="sidebar-brand">
+            <div className="brand-badge">
+              <i className="fas fa-chart-line" />
+            </div>
+            <div className="brand-text">
+              <div className="brand-title">Banking Portal</div>
+              <div className="brand-subtitle">Predictive Lead Scoring</div>
+            </div>
+          </div>
         </div>
 
         {/* MENU */}

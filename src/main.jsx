@@ -4,9 +4,13 @@ import { BrowserRouter } from "react-router-dom";
 import App from "./App";
 
 // === Import CSS Yang Sudah Dipisah ===
-import "./styles/base.css";
+import "./styles/Layout/base.css";
+import "./styles/Layout/sidebar-dark.css";
+import "./styles/Layout/sidebar-light.css";
 import "./styles/landing.css";
-import "./styles/auth.css";
+import "./styles/login/login-base.css";
+import "./styles/login/login-dark.css";
+import "./styles/login/login-light.css";
 import "./styles/dashboard/dashboard.css";
 import "./styles/dashboard/theme-dark.css";
 import "./styles/dashboard/theme-light.css";

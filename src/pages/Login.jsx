@@ -130,7 +130,7 @@ const Login = () => {
             <div className="auth-form-container">
               <h2>Selamat Datang</h2>
               <p className="auth-subtitle">
-                Masuk menggunakan Username atau Email
+                Masuk menggunakan Username atau Email dan Password
               </p>
 
               <form className="auth-form" onSubmit={handleSubmit}>

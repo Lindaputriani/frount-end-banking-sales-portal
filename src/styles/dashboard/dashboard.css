@@ -1,158 +1,15 @@
-/* ==============================
-   DASHBOARD LAYOUT
-================================= */
+/* =========================================
+   DASHBOARD LAYOUT (BASE)
+========================================= */
 
 .dashboard-container {
   height: 100vh;
   display: grid;
-  grid-template-columns: 240px minmax(0, 1fr);
-  overflow: hidden;
-  background: radial-gradient(
-    circle at top,
-    #001a9d 0%,
-    #294762 45%,
-    #121821 100%
-  );
-}
-
-/* Sidebar */
-.sidebar {
-  background: linear-gradient(180deg, #001a9d, #294762);
-  border-right: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 1.6rem 1.3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.8rem;
-  height: 100vh;
-  position: sticky;
-  top: 0;
+  grid-template-columns: 240px minmax(0, 1fr); /* 240px = sidebar */
   overflow: hidden;
 }
 
-.sidebar-header {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-
-.sidebar-header i {
-  padding: 0.55rem;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.18);
-  color: #e0f2fe;
-  border: 1px solid rgba(240, 249, 255, 0.4);
-}
-
-.sidebar-header h3 {
-  font-size: 1rem;
-}
-
-.sidebar-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  border-radius: 999px;
-  padding: 0.55rem 0.75rem;
-  font-size: 0.9rem;
-  color: #e2e8f0;
-  text-decoration: none;
-  border: 1px solid transparent;
-  background: transparent;
-  cursor: pointer;
-  transition: all 0.15s ease;
-}
-
-.nav-item i {
-  font-size: 0.9rem;
-}
-
-.badge {
-  margin-left: auto;
-  padding: 0 0.5rem;
-  font-size: 0.75rem;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.8);
-  border: 1px solid rgba(241, 245, 249, 0.6);
-  color: #e5e7eb;
-}
-
-.badge-danger {
-  background: rgba(239, 68, 68, 0.9);
-  border-color: rgba(254, 202, 202, 0.95);
-  color: #fef2f2;
-}
-
-.nav-item:hover {
-  background: rgba(18, 24, 33, 0.3);
-}
-
-.nav-item.active {
-  background: rgba(0, 0, 0, 0.25);
-  border-color: rgba(248, 250, 252, 0.35);
-  color: #ffffff;
-}
-
-/* Footer sidebar */
-.sidebar-footer {
-  margin-top: auto;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.7rem;
-}
-
-.user-profile {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-}
-
-.user-avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 999px;
-  background: rgba(15, 23, 42, 0.9);
-  border: 1px solid rgba(248, 250, 252, 0.5);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.user-avatar i {
-  font-size: 0.85rem;
-}
-
-.user-info h4 {
-  font-size: 0.9rem;
-}
-
-.user-info p {
-  font-size: 0.75rem;
-  color: #cbd5e1;
-}
-
-.btn-logout {
-  border-radius: 999px;
-  border: none;
-  padding: 0.45rem 0.6rem;
-  background: rgba(15, 23, 42, 0.9);
-  color: #fecaca;
-  cursor: pointer;
-}
-
-.btn-logout:hover {
-  background: rgba(127, 29, 29, 0.6);
-}
-
-/* =========================================
-   DASHBOARD MAIN AREA & HEADER
-========================================= */
+/* AREA KONTEN KANAN */
 .main-content {
   display: flex;
   flex-direction: column;
@@ -161,7 +18,16 @@
   height: 100vh;
   min-height: 0;
   overflow-y: auto;
+
+  /* Biar konten tidak terlalu melebar di layar lebar */
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
 }
+
+/* =========================================
+   HEADER DASHBOARD
+========================================= */
 
 .top-header {
   display: flex;
@@ -177,22 +43,10 @@
 }
 
 .header-left h1 {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
 }
 
-.btn-menu {
-  border: none;
-  background: transparent;
-  color: #f9fafb;
-  cursor: pointer;
-}
-
-.header-right {
-  display: flex;
-  align-items: center;
-  gap: 0.9rem;
-}
-
+/* Search box (default dark, dioverride di theme-light) */
 .search-box {
   display: flex;
   align-items: center;
@@ -201,6 +55,10 @@
   border-radius: 999px;
   background: rgba(15, 23, 42, 0.9);
   border: 1px solid rgba(96, 125, 139, 0.8);
+}
+
+.search-box i {
+  font-size: 0.9rem;
 }
 
 .search-box input {
@@ -215,6 +73,13 @@
   color: #9ca3af;
 }
 
+/* Icon di kanan header (notifikasi, toggle tema, dll) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
 .header-icon {
   position: relative;
   border-radius: 999px;
@@ -225,6 +90,7 @@
   cursor: pointer;
 }
 
+/* Badge jumlah notifikasi */
 .notification-badge {
   position: absolute;
   top: -4px;
@@ -236,7 +102,7 @@
   padding: 0 0.3rem;
 }
 
-/* Dropdown notifikasi */
+/* Dropdown notifikasi (posisi relatif ke header) */
 .notifications-dropdown {
   position: absolute;
   top: 4.1rem;
@@ -262,6 +128,10 @@
   margin-bottom: 0.6rem;
 }
 
+.dropdown-header h3 {
+  font-size: 0.95rem;
+}
+
 .btn-text {
   background: transparent;
   border: none;
@@ -270,6 +140,7 @@
   cursor: pointer;
 }
 
+/* Item notifikasi */
 .notification-item {
   display: flex;
   gap: 0.6rem;
@@ -293,6 +164,10 @@
   color: #9ca3af;
 }
 
+/* =========================================
+   GRID UTAMA DASHBOARD
+========================================= */
+
 .dashboard-content {
   flex: 1;
   display: flex;
@@ -300,9 +175,7 @@
   gap: 1.4rem;
 }
 
-/* =========================================
-   DASHBOARD – STATS & CHART
-========================================= */
+/* Kartu statistik atas (4 kolom di desktop) */
 .stats-grid,
 .cards-grid {
   display: grid;
@@ -319,6 +192,7 @@
   gap: 0.8rem;
 }
 
+/* Icon bulat di kiri kartu */
 .stat-icon {
   width: 36px;
   height: 36px;
@@ -370,6 +244,10 @@
   color: #bbf7d0;
 }
 
+/* =========================================
+   CHART SECTION (Trend + Donut)
+========================================= */
+
 .charts-row {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
@@ -377,7 +255,6 @@
   margin-top: 0.4rem;
 }
 
-/* Chart card (juga dipakai grid view lead) */
 .chart-card {
   border-radius: 16px;
   padding: 18px;
@@ -398,6 +275,7 @@
   margin-bottom: 0.8rem;
 }
 
+/* dropdown periode */
 .select-period {
   border-radius: 999px;
   border: 1px solid rgba(148, 163, 184, 0.9);
@@ -407,6 +285,7 @@
   padding: 0.35rem 0.6rem;
 }
 
+/* tombol titik tiga */
 .btn-icon {
   border-radius: 999px;
   border: none;
@@ -415,7 +294,10 @@
   cursor: pointer;
 }
 
-/* Section bawah dashboard */
+/* =========================================
+   SECTION BAWAH: PRIORITY LEADS + ACTIVITY
+========================================= */
+
 .bottom-section {
   display: grid;
   grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
@@ -432,7 +314,7 @@
 }
 
 /* =========================================
-   LEAD PRIORITAS TINGGI – FINAL PREMIUM UI
+   LEAD PRIORITAS TINGGI
 ========================================= */
 
 .leads-list {
@@ -442,7 +324,7 @@
   gap: 0.7rem;
 }
 
-/* GRID 4 KOLOM (Stable Layout) */
+/* GRID 4 KOLOM: avatar | info | score | tombol */
 .lead-item {
   display: grid;
   grid-template-columns: 42px 4fr 90px 40px;
@@ -461,7 +343,7 @@
   transform: translateY(-1px);
 }
 
-/* AVATAR NASABAH */
+/* Avatar nasabah */
 .lead-avatar {
   width: 42px;
   height: 42px;
@@ -475,145 +357,7 @@
   flex-shrink: 0;
 }
 
-/* INFO NAMA + JABATAN */
-.lead-info {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.lead-info h4 {
-  font-size: 0.95rem;
-  font-weight: 600;
-  margin-bottom: 2px;
-}
-
-.lead-info p {
-  font-size: 0.78rem;
-  color: #6b7280;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-}
-
-/* KOLOM SCORE (90px FIXED) */
-.lead-score {
-  text-align: center;
-  font-size: 0.78rem;
-}
-
-/* Lingkaran score */
-.score-circle {
-  width: 42px;
-  height: 42px;
-  margin: 0 auto 0.25rem;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.82rem;
-  font-weight: 600;
-  border: 5px solid transparent;
-}
-
-/* Warna score */
-.score-circle.high {
-  background: rgba(34, 197, 94, 0.18);
-  border-color: rgba(34, 197, 94, 0.8);
-  color: #166534;
-}
-
-.score-circle.medium {
-  background: rgba(234, 179, 8, 0.18);
-  border-color: rgba(234, 179, 8, 0.85);
-  color: #854d0e;
-}
-
-.score-circle.low {
-  background: rgba(239, 68, 68, 0.18);
-  border-color: rgba(239, 68, 68, 0.85);
-  color: #b91c1c;
-}
-
-.score-label {
-  font-size: 0.75rem;
-  font-weight: 500;
-}
-
-/* TOMBOL TELEPON (FIX 40px) */
-.btn-action {
-  width: 40px;
-  height: 40px;
-  border-radius: 999px;
-  border: 1px solid rgba(96, 125, 139, 0.9);
-  background: #1e3a8a;
-  color: #ffffff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition:
-    background 0.15s ease,
-    border-color 0.15s ease,
-    transform 0.15s ease;
-}
-
-.btn-action:hover {
-  background: #0a1f5a;
-  border-color: #bfdbfe;
-  transform: translateY(-1px);
-}
-
-.btn-action i {
-  font-size: 0.95rem;
-  color: #fff;
-}
-
-/* =========================================
-   LEAD PRIORITAS TINGGI – FINAL RAPIH
-========================================= */
-
-.leads-list {
-  margin-top: 0.8rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
-}
-
-/* GRID 4 KOLOM */
-.lead-item {
-  display: grid;
-  grid-template-columns: 100px 4fr 90px 40px;
-  align-items: center;
-  column-gap: 1rem;
-  padding: 0.65rem 0.85rem;
-  border-radius: 14px;
-  cursor: pointer;
-  transition:
-    background 0.15s ease,
-    transform 0.15s ease;
-}
-
-.lead-item:hover {
-  background: rgba(30, 64, 175, 0.15);
-  transform: translateY(-1px);
-}
-
-/* Avatar kiri */
-.lead-avatar {
-  width: 42px;
-  height: 42px;
-  border-radius: 999px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(134, 151, 207, 0.75);
-  color: #ffffff;
-  font-size: 0.9rem;
-  flex-shrink: 0;
-}
-
-/* Info nama & jabatan */
+/* Info nama + jabatan */
 .lead-info {
   display: flex;
   flex-direction: column;
@@ -634,7 +378,7 @@
   text-overflow: ellipsis;
 }
 
-/* Kolom score (90px) */
+/* Kolom score (90px fix) */
 .lead-score {
   text-align: center;
   font-size: 0.78rem;
@@ -654,22 +398,23 @@
   border: 5px solid transparent;
 }
 
+/* Warna score (default dark-mode; light-mode override di theme-light) */
 .score-circle.high {
   background: rgba(34, 197, 94, 0.18);
   border-color: rgba(34, 197, 94, 0.8);
-  color: #166534;
+  color: #bbf7d0;
 }
 
 .score-circle.medium {
   background: rgba(234, 179, 8, 0.18);
   border-color: rgba(234, 179, 8, 0.85);
-  color: #854d0e;
+  color: #fef9c3;
 }
 
 .score-circle.low {
   background: rgba(239, 68, 68, 0.18);
   border-color: rgba(239, 68, 68, 0.85);
-  color: #b91c1c;
+  color: #fecaca;
 }
 
 .score-label {
@@ -677,7 +422,7 @@
   font-weight: 500;
 }
 
-/* Tombol telepon (40px) */
+/* Tombol telepon */
 .btn-action {
   width: 40px;
   height: 40px;
@@ -757,43 +502,9 @@
 }
 
 /* =========================================
-   SIDEBAR TRANSPARAN / GLASS (OVERRIDE)
+   RESPONSIVE
 ========================================= */
-.sidebar {
-  background: linear-gradient(
-    180deg,
-    rgba(0, 26, 157, 0.92),
-    rgba(41, 71, 98, 0.92)
-  );
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  border-right: 1px solid rgba(255, 255, 255, 0.14);
-}
 
-/* Biar nav-item kelihatan hover-nya */
-.nav-item {
-  background: transparent;
-}
-
-.nav-item:hover {
-  background: rgba(15, 23, 42, 0.35);
-}
-
-.nav-item.active {
-  background: rgba(15, 23, 42, 0.6);
-  border-color: rgba(248, 250, 252, 0.4);
-}
-
-/* ====== RAPIKAN LAYOUT DASHBOARD (CENTER + RESPONSIVE) ====== */
-
-/* Biar area konten kanan tidak terlalu melebar dan lebih center */
-.main-content {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-}
-
-/* Grid statistik & chart lebih rapi di layar sedang */
 @media (max-width: 1200px) {
   .stats-grid,
   .cards-grid {
@@ -806,8 +517,11 @@
   }
 }
 
-/* Di layar kecil, setiap card jadi 1 kolom */
 @media (max-width: 768px) {
+  .dashboard-container {
+    grid-template-columns: 1fr; /* sidebar bisa jadi off-canvas kalau mau */
+  }
+
   .stats-grid,
   .cards-grid {
     grid-template-columns: minmax(0, 1fr);
