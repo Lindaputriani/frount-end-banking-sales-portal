@@ -3,7 +3,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 
 import Landing from "./pages/Landing";
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Leads from "./pages/Leads";
 import LeadDetail from "./pages/LeadDetail";
@@ -23,7 +22,6 @@ const App = () => {
 
       {/* Auth */}
       <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
 
       {/* Halaman yang pakai sidebar & header */}
       <Route element={<Layout />}>
@@ -31,7 +29,7 @@ const App = () => {
         <Route path="/leads" element={<Leads />} />
         <Route path="/leads/:id" element={<LeadDetail />} />
 
-        {/* route baru untuk menu kiri */}
+        {/* menu kiri */}
         <Route path="/priority" element={<PriorityLeads />} />
         <Route path="/follow-up" element={<FollowUp />} />
         <Route path="/analytics" element={<Analytics />} />

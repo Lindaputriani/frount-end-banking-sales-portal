@@ -1,14 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { toggleTheme } from "../theme";
 
 const Landing = () => {
-  const [isLight, setIsLight] = useState(false);
-
-  useEffect(() => {
-    const hasLight = document.documentElement.classList.contains("light");
-    setIsLight(hasLight);
-  }, []);
+  // Baca tema awal langsung saat inisialisasi state
+  const [isLight, setIsLight] = useState(() =>
+    document.documentElement.classList.contains("light")
+  );
 
   const handleToggle = () => {
     toggleTheme();
@@ -23,8 +21,7 @@ const Landing = () => {
         onClick={handleToggle}
         aria-label="Toggle Theme"
       >
-        {/* ICON SUDAH BENAR */}
-        <i className={isLight ? "fas fa-sun" : "fas fa-moon"}></i>
+        <i className={isLight ? "fas fa-sun" : "fas fa-moon"} />
       </button>
 
       <div className="landing-page-simple">
@@ -47,11 +44,8 @@ const Landing = () => {
           </p>
 
           <div className="landing-buttons">
-            <Link to="/register" className="btn btn-primary hero-btn">
-              <i className="fas fa-user-plus" />
-              <span>Daftar Sekarang</span>
-            </Link>
-            <Link to="/login" className="btn btn-outline hero-btn">
+            {/* Register sudah dihapus, hanya tombol Login */}
+            <Link to="/login" className="btn btn-primary hero-btn">
               <i className="fas fa-sign-in-alt" />
               <span>Masuk</span>
             </Link>

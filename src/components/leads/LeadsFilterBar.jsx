@@ -61,7 +61,7 @@ const LeadsFilterBar = ({
             value={jobFilter}
             onChange={(e) => setJobFilter(e.target.value)}
           >
-            <option value="all">Semua Pekeran</option>
+            <option value="all">Semua Pekerajaan</option>
             <option value="management">Management</option>
             <option value="entrepreneur">Entrepreneur</option>
             <option value="professional">Professional</option>

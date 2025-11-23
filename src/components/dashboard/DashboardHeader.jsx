@@ -1,10 +1,22 @@
 import React, { useState } from "react";
+import { toggleTheme } from "../../theme"; // <- path sudah benar
 
 const DashboardHeader = () => {
   const [showNotifications, setShowNotifications] = useState(false);
 
+  // cek apakah sedang light/dark untuk icon toggle
+  const [isLight, setIsLight] = useState(
+    document.documentElement.classList.contains("light")
+  );
+
   const toggleNotifications = () => {
     setShowNotifications((prev) => !prev);
+  };
+
+  // tombol untuk toggle tema
+  const handleToggleTheme = () => {
+    toggleTheme();
+    setIsLight((prev) => !prev);
   };
 
   return (
@@ -14,11 +26,22 @@ const DashboardHeader = () => {
       </div>
 
       <div className="header-right">
+        {/* SEARCH BOX */}
         <div className="search-box">
           <i className="fas fa-search" />
           <input type="text" placeholder="Cari nasabah..." />
         </div>
 
+        {/* THEME TOGGLE BUTTON DI HEADER */}
+        <button
+          className="header-icon"
+          type="button"
+          onClick={handleToggleTheme}
+        >
+          <i className={isLight ? "fas fa-sun" : "fas fa-moon"} />
+        </button>
+
+        {/* NOTIFICATION ICON */}
         <button
           className="header-icon"
           type="button"
@@ -28,6 +51,7 @@ const DashboardHeader = () => {
           <span className="notification-badge">5</span>
         </button>
 
+        {/* NOTIFICATION DROPDOWN */}
         <div
           className={`notifications-dropdown ${showNotifications ? "open" : ""}`}
         >
@@ -66,10 +90,6 @@ const DashboardHeader = () => {
             </div>
           </div>
         </div>
-
-        <button className="header-icon" type="button">
-          <i className="fas fa-question-circle" />
-        </button>
       </div>
     </header>
   );

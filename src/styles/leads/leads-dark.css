@@ -273,37 +273,37 @@
 
 .badge-high {
   background: rgba(22, 163, 74, 0.16);
-  border: 1px solid #6ee7b7;
+  border: 2px solid #6ee7b7;
   color: #bbf7d0;
 }
 
 .badge-medium {
   background: rgba(234, 179, 8, 0.16);
-  border: 1px solid #fcd34d;
+  border: 2px solid #fcd34d;
   color: #fef9c3;
 }
 
 .status-new {
   background: rgba(59, 130, 246, 0.16);
-  border: 1px solid #93c5fd;
+  border: 2px solid #93c5fd;
   color: #bfdbfe;
 }
 
 .status-contacted {
   background: rgba(34, 197, 94, 0.16);
-  border: 1px solid #6ee7b7;
+  border: 2px solid #6ee7b7;
   color: #bbf7d0;
 }
 
 .status-follow-up {
   background: rgba(250, 204, 21, 0.16);
-  border: 1px solid #fcd34d;
+  border: 2px solid #fcd34d;
   color: #fef9c3;
 }
 
 .status-converted {
   background: rgba(22, 163, 74, 0.18);
-  border: 1px solid #86efac;
+  border: 2px solid #86efac;
   color: #bbf7d0;
 }
 

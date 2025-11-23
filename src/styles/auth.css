@@ -1,5 +1,5 @@
 /* =========================================
-   AUTH (LOGIN & REGISTER)
+   AUTH (LOGIN)
 ========================================= */
 .auth-page {
   min-height: 100vh;
@@ -15,28 +15,7 @@
   );
 }
 
-/* Login card */
-.auth-card {
-  width: 100%;
-  max-width: 420px;
-  padding: 2.2rem 2rem;
-  border-radius: 24px;
-  background: linear-gradient(145deg, #1e2837, #121821);
-  border: 1px solid rgba(96, 125, 139, 0.8);
-  box-shadow: var(--shadow-soft);
-}
-
-.auth-card h2 {
-  font-size: 1.4rem;
-  margin-bottom: 0.3rem;
-}
-
-.auth-subtitle {
-  font-size: 0.9rem;
-  margin-bottom: 1.6rem;
-}
-
-/* Register / layout 2 kolom */
+/* Layout 2 kolom: kiri (branding), kanan (form login) */
 .auth-container {
   width: 100%;
   max-width: 1080px;
@@ -49,6 +28,7 @@
   box-shadow: var(--shadow-soft);
 }
 
+/* Panel kiri: branding & fitur */
 .auth-left {
   padding: 2.2rem 2.2rem;
   background: radial-gradient(
@@ -109,6 +89,7 @@
   margin-bottom: 0.2rem;
 }
 
+/* Panel kanan: form login */
 .auth-right {
   padding: 2.2rem 2.2rem;
   background: linear-gradient(145deg, #1e2837, #121821);
@@ -131,17 +112,11 @@
   margin-bottom: 1.4rem;
 }
 
-/* Form umum */
+/* Form login */
 .auth-form {
   display: flex;
   flex-direction: column;
   gap: 0.95rem;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.8rem;
 }
 
 .form-group {
@@ -185,6 +160,7 @@
   box-shadow: 0 0 0 1px rgba(0, 128, 128, 0.7);
 }
 
+/* Password + toggle eye */
 .password-input {
   position: relative;
   display: flex;
@@ -212,12 +188,7 @@
   font-size: 0.9rem;
 }
 
-.password-strength {
-  margin-top: 0.3rem;
-  font-size: 0.8rem;
-  color: #e5e7eb;
-}
-
+/* Checkbox Ingat saya + Lupa password */
 .checkbox-group {
   margin-top: 0.3rem;
   display: flex;
@@ -242,10 +213,12 @@
   text-decoration: underline;
 }
 
+/* Tombol full width */
 .btn-block {
   width: 100%;
 }
 
+/* Divider "atau" */
 .auth-divider {
   margin: 1.2rem 0 0.8rem;
   text-align: center;
@@ -272,6 +245,7 @@
   right: 0;
 }
 
+/* Login sosial */
 .social-login {
   display: flex;
   gap: 0.8rem;
@@ -295,6 +269,7 @@
   color: #22c55e;
 }
 
+/* Text bawah: "Belum punya akun? ..." */
 .auth-switch {
   font-size: 0.85rem;
   text-align: center;
@@ -304,7 +279,7 @@
   color: #bfdbfe;
 }
 
-/* Untuk login lama */
+/* Footer login lama (kalau dipakai) */
 .auth-footer {
   margin-top: 1.2rem;
   text-align: center;
@@ -312,7 +287,7 @@
 }
 
 /* =========================
-   AUTH – LIGHT MODE (REGISTER & LOGIN)
+   AUTH – LIGHT MODE (LOGIN)
 ========================= */
 
 html.light .auth-page {
@@ -324,65 +299,73 @@ html.light .auth-page {
   );
 }
 
-/* =========================
-   CONTAINER (KOTAK BESAR)
-========================= */
-
+/* Container (kotak besar) */
 html.light .auth-container {
   background: #ffffff;
   border: 1px solid rgba(179, 207, 229, 0.8);
   box-shadow: 0 18px 40px rgba(10, 25, 49, 0.18);
 }
 
-/* =========================
-   PANEL KIRI (BRANDING)
-========================= */
-
+/* Panel kiri – branding (light mode final) */
 html.light .auth-left {
-  background: linear-gradient(135deg, #88ace7, #7faad8);
-  color: #f9fafb;
-}
-
-html.light .auth-branding h1 {
-  color: #ffffff;
-}
-
-html.light .auth-branding p {
-  color: #e0ecff;
+  background: linear-gradient(
+    180deg,
+    #f6fafd 0%,
+    #dbe6ee 28%,
+    #4a7fa7 65%,
+    #1a3d63 100%
+  );
+  color: #ffffff !important;
 }
 
 html.light .auth-branding i {
   color: #ffffff;
+  font-size: 2.4rem;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  padding: 0.6rem;
+  margin-bottom: 1rem;
+  background: none;
 }
 
-/* ITEMS FITUR KIRI */
+html.light .auth-branding h1 {
+  color: #ffffff;
+  font-weight: 700;
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
+}
+
+html.light .auth-branding p {
+  color: #e8f2ff;
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Feature cards kiri (light) */
 html.light .auth-features .feature-item {
-  background: rgba(10, 25, 49, 0.2); /* LEBIH TERANG dari sebelumnya */
-  border: 1px solid rgba(230, 240, 255, 0.9);
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   backdrop-filter: blur(4px);
 }
 
 html.light .auth-features .feature-item:hover {
-  background: rgba(10, 25, 49, 0.28);
-}
-
-html.light .auth-features .feature-item i {
-  color: #ffffff !important; /* IKON TERANG */
+  background: rgba(255, 255, 255, 0.25);
 }
 
 html.light .auth-features .feature-item h3 {
-  color: #ffffff !important; /* TITLE TERANG */
+  color: #ffffff;
   font-weight: 600;
 }
 
 html.light .auth-features .feature-item p {
-  color: #e0ecff; /* DESKRIPSI */
+  color: #f1f7ff !important;
+  font-weight: 400;
 }
 
-/* =========================
-   PANEL KANAN (FORM LOGIN/REGISTER)
-========================= */
+html.light .auth-features .feature-item i {
+  color: #ffffff !important;
+}
 
+/* Panel kanan – form login (light) */
 html.light .auth-right {
   background: #ffffff;
 }
@@ -395,12 +378,12 @@ html.light .auth-form-container .auth-subtitle {
   color: #1a3d63;
 }
 
-/* LABEL */
+/* Label */
 html.light .form-group label {
   color: #1f2937;
 }
 
-/* INPUT & SELECT */
+/* Input & select (light) */
 html.light .form-group input,
 html.light .form-group select {
   background: #f9fafb;
@@ -414,7 +397,7 @@ html.light .form-group select::placeholder {
   color: #9ca3af;
 }
 
-/* PASSWORD FIELD */
+/* Password field */
 html.light .password-input input {
   background: #f9fafb;
 }
@@ -423,7 +406,7 @@ html.light .toggle-password {
   color: #6b7280;
 }
 
-/* CHECKBOX & LINK */
+/* Checkbox & link */
 html.light .checkbox-label {
   color: #374151;
 }
@@ -432,15 +415,12 @@ html.light .checkbox-label .link {
   color: #1a3d63;
 }
 
-/* PEMBATAS */
+/* Divider */
 html.light .auth-divider {
   color: #9ca3af;
 }
 
-/* =========================
-   TOMBOL SOSIAL
-========================= */
-
+/* Tombol sosial */
 html.light .btn-social {
   background: #ffffff;
   border: 1px solid rgba(179, 207, 229, 0.9);
@@ -451,10 +431,7 @@ html.light .btn-social:hover {
   background: #f6fafd;
 }
 
-/* =========================
-   FOOTER TEXT ("Sudah punya akun?")
-========================= */
-
+/* Footer text bawah */
 html.light .auth-switch {
   color: #4b5563;
 }
@@ -463,8 +440,33 @@ html.light .auth-switch .link {
   color: #1a3d63;
 }
 
+/* Tombol utama (Masuk) di auth, tetap putih ikonnya */
+html.light .btn-primary {
+  background: #4a7fa7;
+  color: #ffffff !important;
+  border: none;
+}
+
+html.light .btn-primary:hover {
+  background: #1a3d63;
+}
+
+html.light .btn-primary i,
+html.light .btn-primary svg {
+  color: #ffffff !important;
+  opacity: 1 !important;
+}
+
+/* Branding icon override */
+html.light .auth-left .auth-branding svg,
+html.light .auth-left .auth-branding .fa-chart-line {
+  color: #4a7fa7 !important;
+  background: none !important;
+  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
+}
+
 /* =========================
-   TOGGLE TEMA (LOGIN/REGISTER)
+   TOGGLE TEMA (LOGIN)
 ========================= */
 
 .auth-theme-toggle {
@@ -492,7 +494,7 @@ html.light .auth-switch .link {
   border-color: rgba(0, 0, 0, 0.25);
 }
 
-/* DARK MODE */
+/* Dark mode untuk toggle */
 html:not(.light) .auth-theme-toggle {
   background: rgba(18, 24, 33, 0.7);
   border-color: rgba(255, 255, 255, 0.2);
@@ -501,116 +503,4 @@ html:not(.light) .auth-theme-toggle {
 
 html:not(.light) .auth-theme-toggle:hover {
   background: rgba(18, 24, 33, 0.9);
-}
-
-/* =========================================
-   FIX: Deskripsi fitur di panel kiri login
-   ========================================= */
-
-/* Pastikan kartu tidak transparan di light mode */
-html.light .auth-features .feature-item {
-  opacity: 1; /* override kalau sebelumnya ada opacity */
-}
-
-/* Perjelas teks deskripsi di bawah judul */
-html.light .auth-features .feature-item p {
-  color: #f1f5ff !important; /* hampir putih, masih sedikit biru */
-  font-weight: 400;
-}
-
-/* =========================
-   AUTH – LEFT PANEL LIGHT MODE (FINAL)
-========================= */
-
-/* Panel kiri */
-html.light .auth-left {
-  background: linear-gradient(
-    180deg,
-    #f6fafd 0%,
-    #dbe6ee 28%,
-    #4a7fa7 65%,
-    #1a3d63 100%
-  );
-  color: #ffffff !important;
-}
-
-/* Branding */
-html.light .auth-branding i {
-  color: #ffffff;
-  font-size: 2.4rem;
-  border: 2px solid rgba(255, 255, 255, 0.7);
-  border-radius: 50%;
-  padding: 0.6rem;
-  margin-bottom: 1rem;
-}
-
-html.light .auth-branding h1 {
-  color: #ffffff;
-  font-weight: 700;
-  text-shadow: 0 0 6px rgba(0, 0, 0, 0.35);
-}
-
-html.light .auth-branding p {
-  color: #e8f2ff;
-  text-shadow: 0 0 4px rgba(0, 0, 0, 0.25);
-}
-
-/* Feature cards */
-html.light .auth-features .feature-item {
-  background: rgba(255, 255, 255, 0.18);
-  border: 1px solid rgba(255, 255, 255, 0.28);
-  backdrop-filter: blur(4px);
-}
-
-html.light .auth-features .feature-item:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-html.light .auth-features .feature-item h3 {
-  color: #ffffff;
-  font-weight: 600;
-}
-
-html.light .auth-features .feature-item p {
-  color: #f1f7ff;
-}
-
-html.light .auth-features .feature-item i {
-  color: #ffffff;
-}
-
-/* Tombol utama (Masuk / Daftar Sekarang) */
-html.light .btn-primary {
-  background: #4a7fa7;
-  color: #ffffff !important;
-  border: none;
-}
-
-html.light .btn-primary:hover {
-  background: #1a3d63;
-}
-
-/* Ikon di tombol Masuk tidak boleh menghilang */
-html.light .btn-primary i,
-html.light .btn-primary svg {
-  color: #ffffff !important;
-  opacity: 1 !important;
-}
-
-/* ===============================
-   FIX: Branding Icon (LEFT PANEL)
-   =============================== */
-
-/* Icon besar di atas "Banking Sales Portal" */
-html.light .auth-left .auth-branding i {
-  background: none !important;
-  opacity: 1 !important;
-}
-
-/* Kalau icon menggunakan lingkaran dari library */
-html.light .auth-left .auth-branding svg,
-html.light .auth-left .auth-branding .fa-chart-line {
-  color: #4a7fa7 !important;
-  background: none !important;
-  filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0.4));
 }
