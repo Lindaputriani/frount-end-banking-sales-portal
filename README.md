@@ -16,8 +16,6 @@ Aplikasi ini memiliki dukungan **Dark & Light Mode**, tampilan dashboard interak
 | **CSS Custom Styling** | Desain UI modern & responsif |
 | **FontAwesome Icons** | Icon pack |
 
----
-
 ## 🔥 **Fitur Utama**
 
 ### 📊 **Dashboard Interaktif**
