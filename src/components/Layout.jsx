@@ -1,10 +1,16 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Outlet, useLocation, useNavigate } from "react-router-dom";
-import { sidebarCounts } from "../data/dashboardMock";
+import { api } from "../api/client";
 
 const Layout = () => {
   const location = useLocation();
   const navigate = useNavigate();
+
+  // angka di badge sidebar, diisi dari backend
+  const [sidebarCounts, setSidebarCounts] = useState({
+    leadsTotal: 0,
+    highPriority: 0,
+  });
 
   const isActive = (path) =>
     location.pathname === path || location.pathname.startsWith(path + "/");
@@ -12,19 +18,52 @@ const Layout = () => {
   const handleLogout = () => {
     localStorage.removeItem("userName");
     localStorage.removeItem("userRole");
+    localStorage.removeItem("accessToken");
+    localStorage.removeItem("refreshToken");
     navigate("/login");
   };
 
   const userName = localStorage.getItem("userName") || "Ahmad Rizki";
   const userRole = localStorage.getItem("userRole") || "Sales Manager";
 
+  // ====== AMBIL DATA DARI BACKEND: /dashboard/stats ======
+  useEffect(() => {
+    const fetchSidebarCounts = async () => {
+      try {
+        // api client sudah otomatis kirim Authorization header
+        const res = await api.get("/dashboard/stats");
+
+        // backend: { status, data: { stats: { ... } } }
+        const stats = res.data?.data?.stats || res.data?.data || {};
+
+        setSidebarCounts({
+          leadsTotal: stats.totalLeads ?? 0,
+          highPriority: stats.highPriorityLeads ?? 0,
+        });
+      } catch (err) {
+        console.error("Gagal mengambil statistik sidebar:", err);
+        // kalau gagal, biarkan angka tetap 0 saja
+      }
+    };
+
+    fetchSidebarCounts();
+  }, []);
+
   return (
     <div className="dashboard-container">
       {/* SIDEBAR */}
       <aside className="sidebar">
-        {/* BARIS ATAS: Banking Portal (tanpa toggle tema) */}
+        {/* BRANDING ATAS: icon + title + subtitle */}
         <div className="sidebar-title-row">
-          <h2>Banking Portal</h2>
+          <div className="sidebar-brand">
+            <div className="brand-badge">
+              <i className="fas fa-chart-line" />
+            </div>
+            <div className="brand-text">
+              <div className="brand-title">Banking Portal</div>
+              <div className="brand-subtitle">Predictive Lead Scoring</div>
+            </div>
+          </div>
         </div>
 
         {/* MENU */}

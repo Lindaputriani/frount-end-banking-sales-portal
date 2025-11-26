@@ -90,7 +90,7 @@ html.light .filter-group-inline select:focus {
   box-shadow: 0 0 0 1px rgba(74, 127, 167, 0.35);
 }
 
-/* Toggle list / grid */
+/* Toggle list / grid default */
 html.light .view-toggle-dark {
   background: #ffffff;
   border: 1px solid #b3cfe5;
@@ -100,18 +100,25 @@ html.light .view-toggle-dark .view-btn-dark {
   color: #1a3d63;
 }
 
-html.light .view-toggle-dark .view-btn-dark.active {
-  background: #0a1931;
-  color: #ffffff;
+/* Hover disamakan dengan tombol aksi */
+html.light .view-toggle-dark .view-btn-dark:hover {
+  background: #0a1931 !important;
+  color: #ffffff !important;
+  border-radius: 8px; /* biar lembut, opsional */
 }
 
-/* Hover: icon & text putih */
-html.light .view-toggle-dark .view-btn-dark:hover {
-  background: #0a1931;
+/* Ikon ikut jadi putih */
+html.light .view-toggle-dark .view-btn-dark:hover i {
   color: #ffffff !important;
 }
 
-html.light .view-toggle-dark .view-btn-dark:hover i {
+/* Aktif (terpilih) juga disamakan */
+html.light .view-toggle-dark .view-btn-dark.active {
+  background: #0a1931 !important;
+  color: #ffffff !important;
+}
+
+html.light .view-toggle-dark .view-btn-dark.active i {
   color: #ffffff !important;
 }
 
